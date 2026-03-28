@@ -1,0 +1,12 @@
+[project]
+name = "masters-thesis-repo"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "jupyter>=1.1.1",
+    "pandas>=3.0.1",
+    "pingouin>=0.6.0",
+    "statsmodels>=0.14.6",
+]
