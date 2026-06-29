@@ -7,7 +7,11 @@
 	"mounts": [
 		"source=${localWorkspaceFolder}/../StudyChat,destination=/workspaces/StudyChat,type=bind,readonly"
 	],
-	"onCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh"
+	"onCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+	"postCreateCommand": "uv sync",
+	"containerEnv": {
+		"OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}"
+	}
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
