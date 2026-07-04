@@ -11,6 +11,23 @@
 	"postCreateCommand": "uv sync",
 	"containerEnv": {
 		"OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.autopep8",
+				"ms-toolsai.datawrangler",
+				"ms-python.vscode-pylance",
+				"ms-python.python",
+				"ms-python.debugpy",
+				"ms-python.vscode-python-envs",
+				"ms-toolsai.jupyter-keymap",
+				"ms-toolsai.jupyter",
+				"ms-toolsai.vscode-jupyter-slideshow",
+				"ms-toolsai.jupyter-renderers",
+				"ms-toolsai.vscode-jupyter-cell-tags"
+			]
+		}
 	}
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
