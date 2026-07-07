@@ -2,3 +2,4 @@
 .venv/*
 *.sh
 data/
+__pycache__/

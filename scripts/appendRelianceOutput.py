@@ -18,7 +18,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--merged-output",
-        default="data/outputs/merged_output.jsonl",
+        default="data/outputs/batch_outputs/merged_output.jsonl",
         help="Path to the merged output JSONL file.",
     )
     parser.add_argument(
@@ -58,9 +58,11 @@ def extract_lookup_key(custom_id: str) -> tuple[str, int]:
         raise ValueError(f"Invalid custom_id format: {custom_id!r}") from exc
 
 
-def extract_message_content(record: dict) -> str | None:
+def extract_message_content(record: dict) -> dict[str, str] | None:
     try:
-        return record["response"]["body"]["choices"][0]["message"]["content"]
+        content = json.loads(
+            record["response"]["body"]["choices"][0]["message"]["content"])
+        return content
     except (KeyError, IndexError, TypeError):
         return None
 
