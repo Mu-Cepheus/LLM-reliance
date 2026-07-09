@@ -1,32 +1,31 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "Python 3",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/python:3-3.14-trixie",
+	"name": "Reliance Project",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
 	"mounts": [
 		"source=${localWorkspaceFolder}/../StudyChat,destination=/workspaces/StudyChat,type=bind,readonly"
 	],
-	"onCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh",
-	"postCreateCommand": "uv sync",
+	"postCreateCommand": "uv sync --locked --all-groups",
 	"containerEnv": {
-		"OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}"
+		"OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}",
+		"UV_LINK_MODE": "copy",
+		"UV_COMPILE_BYTECODE": "1",
+		"UV_PROJECT_ENVIRONMENT": "/workspaces/.venv"
 	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ms-python.autopep8",
 				"ms-toolsai.datawrangler",
-				"ms-python.vscode-pylance",
 				"ms-python.python",
-				"ms-python.debugpy",
-				"ms-python.vscode-python-envs",
-				"ms-toolsai.jupyter-keymap",
-				"ms-toolsai.jupyter",
-				"ms-toolsai.vscode-jupyter-slideshow",
-				"ms-toolsai.jupyter-renderers",
-				"ms-toolsai.vscode-jupyter-cell-tags"
-			]
+				"charliermarsh.ruff",
+				"ms-toolsai.jupyter"
+			],
+			"settings": {
+				"python.defaultInterpreterPath": "/workspaces/.venv/bin/python"
+			}
 		}
 	}
 	// Features to add to the dev container. More info: https://containers.dev/features.
